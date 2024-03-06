@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 const app = express();
 import mongoose from "mongoose";
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 
 // connect DB
-connectDB();
+connectDB(process.env.MONGO_URL);
 
 // routes
 app.use('/user', userRouter);
