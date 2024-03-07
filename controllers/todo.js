@@ -70,10 +70,13 @@ export async function deleteTodo(req, res) {
 
 export async function getTodoById(req, res) {
     try {
-        let todo = await Todo.findOne({_id: req.params.id, user: req.user.user._id});
-        console.log(todo)
-        if (todo) {
-            return res.send({ status: true, todo: todo })
+        if (/^[0-9a-fA-F]{24}$/.test(req.params.id)) {
+            let todo = await Todo.findOne({ _id: req.params.id, user: req.user.user._id });
+            if (todo) {
+                return res.send({ status: true, todo: todo })
+            } else {
+                return res.status(401).send({ status: false, msg: "not Authorized or invalid todoId" })
+            }
         } else {
             return res.status(401).send({ status: false, msg: "not Authorized or invalid todoId" })
         }

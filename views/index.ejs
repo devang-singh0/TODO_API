@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Nunito:ital,wght@0,600;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Rubik", sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            background-color: #dcdcdc;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        main h1 {
+            text-align: center;
+            color: brown;
+            margin-bottom: 30px;
+        }
+
+        main>h3 {
+            letter-spacing: 1px;
+            color: rgb(58, 58, 58);
+            margin-bottom: 10px;
+        }
+
+        main>p {
+            margin-bottom: 5px;
+            color: rgb(164, 0, 0);
+        }
+
+        main>p span {
+            font-weight: 600;
+            color: rgb(102, 0, 0);
+        }
+
+        main>.codebox {
+            margin: 20px 0;
+            background-color: rgb(208, 255, 239);
+            border: #b3d9ff;
+        }
+
+        main>.codebox a {
+            text-decoration: none;
+            padding-left: 20px;
+        }
+
+        .codebox {
+            background-color: #e6f7ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .codebox h3 {
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .codebox h3 span {
+            font-weight: 500;
+            color: green;
+        }
+
+        .box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .box>h2 {
+            color: rgb(0, 229, 255);
+            font-weight: 600;
+        }
+
+        .box>h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .codebox>p {
+            letter-spacing: 1px;
+        }
+
+        .codebox>p>span {
+            color: #b2b2b2;
+        }
+
+        .codebox h4 {
+            color: blue;
+            font-weight: 500;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <h1>TO DO api documentation</h1>
+        <h3>Authentication</h3>
+        <p>bearer token Authentication is required for making <span>any type of request</span> on <span>/todo</span></p>
+        <p>bearer token Authentication is required for making <span>PATCH and DELETE</span> request on
+            <span>/user</span>
+        </p>
+        <p>Email and Password for fields required for making <span>GET and POST</span> request on <span>/user</span></p>
+
+        <div class="codebox">
+            <a href="">https://devang-todo-api.up.railway.app</a>
+        </div>
+        <div class="box">
+            <h2>GET /user</h2>
+            <p>Generates Authentication Token for a registered user</p>
+            <p>Used for login</p>
+            <h3>Request Body:</h3>
+            <div class="codebox">
+                <p>
+                    { <br>
+                    &emsp;"email": "your@mail.com", <br>
+                    &emsp;"password": "yourPasswords"<br>
+                    }
+                </p>
+            </div>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>GET</span>&emsp;https://devang-todo-api.up.railway.app/user</h3>
+                <p>
+                    {<br>
+                    &emsp;"email": "name@gmail.com",<br>
+                    &emsp;"password": "IAmTheBest"<br>
+                    }
+                </p>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"token": "YOUR_TOKEN_HERE"<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>POST /user</h2>
+            <p>Generates Authentication Token and makes a new user in DB</p>
+            <p>Used for registration</p>
+            <h3>Request Body:</h3>
+            <div class="codebox">
+                <p>
+                    { <br>
+                    &emsp;"email": "your@mail.com", <br>
+                    &emsp;"password": "yourPasswords"<br>
+                    &emsp;"name": "your name" &emsp;&emsp;&emsp;<span>//optional</span> <br>
+                    }
+                </p>
+            </div>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>POST</span>&emsp;https://devang-todo-api.up.railway.app/user</h3>
+                <p>
+                    {<br>
+                    &emsp;"email": "name@gmail.com",<br>
+                    &emsp;"password": "IAmTheBest"<br>
+                    }
+                </p>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"token": "YOUR_TOKEN_HERE"<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>PATCH /user</h2>
+            <p>Changes email or password or both for an existing user</p>
+            <p>Used for changing user credentials</p>
+            <h3>Request Body:</h3>
+            <div class="codebox">
+                <p>
+                    { <br>
+                    &emsp;"email": "your@mail.com", &emsp;&emsp;&emsp;<span>//your new email address</span><br>
+                    &emsp;"password": "yourPasswords"&emsp;&emsp;&emsp;<span>//your new password</span><br>
+                    &emsp;"name": "your name" &emsp;&emsp;&emsp;<span>//your new name</span> <br>
+                    }
+                </p>
+            </div>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>PATCH</span>&emsp;https://devang-todo-api.up.railway.app/user</h3>
+                <h4>**Bearer Token Required</h4>
+                <p>
+                    {<br>
+                    &emsp;"email": "name@gmail.com",<br>
+                    &emsp;"password": "IAmTheBest"<br>
+                    &emsp;"newToken": "newToken"&emsp;&emsp;&emsp;<span>//for any further requests this token must be
+                        used for patched user</span><br>
+                    }
+                </p>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"user": "UPDATED_DETAILS_OF_USER"<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>DELETE /user</h2>
+            <p>Removes an existing user</p>
+            <p>Used for deleting user</p>
+            <h3>Request Body:</h3>
+            <div class="codebox">
+                <p>
+                    { <br>
+                    &emsp;"email": "your@mail.com", &emsp;&emsp;&emsp;<br>
+                    &emsp;"password": "yourPasswords"&emsp;&emsp;&emsp;<br>
+                    }
+                </p>
+            </div>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>DELETE</span>&emsp;https://devang-todo-api.up.railway.app/user</h3>
+                <h4>**Bearer Token Required</h4>
+                <p>
+                    { <br>
+                    &emsp;"email": "your@mail.com", &emsp;&emsp;&emsp;<br>
+                    &emsp;"password": "yourPasswords"&emsp;&emsp;&emsp;<br>
+                    }
+                </p>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"msg": "user deleted"<br>
+                    }
+                </p>
+            </div>
+        </div>
+
+        <br>
+        <hr><br>
+
+        <div class="box">
+            <h2>GET /todo</h2>
+            <p>Returns all TODO's by the user logged in</p>
+            <p>Used to retrieve todo's</p>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>GET</span>&emsp;https://devang-todo-api.up.railway.app/todo</h3>
+                <h4>**Bearer Token Required</h4>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"TODO": "ALL_YOUR_TODO ",<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>POST /todo</h2>
+            <p>Creates a new todo</p>
+            <p>Used to make a new todo in DB</p>
+            <h3>Request Body:</h3>
+            <div class="codebox">
+                <p>
+                    { <br>
+                    &emsp;"title": "title of your todo", <br>
+                    &emsp;"description": "description for the todo"<br>
+                    &emsp;"completed": true/false &emsp;&emsp;&emsp;<span>//optional</span> <br>
+                    }
+                </p>
+            </div>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>POST</span>&emsp;https://devang-todo-api.up.railway.app/user</h3>
+                <h4>**Bearer Token Required</h4>
+                <p>
+                    { <br>
+                    &emsp;"title": "myToDo1", <br>
+                    &emsp;"description": "description for myToDo1"<br>
+                    &emsp;"completed": false &emsp;&emsp;&emsp;<span>//optional</span> <br>
+                    }
+                </p>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"todo": "YOUR_TODO"<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>PATCH /todo</h2>
+            <p>Changes existing todo</p>
+            <p>Used for updating or completing a todo (completed: true)</p>
+            <h3>Request Body:</h3>
+            <div class="codebox">
+                <p>
+                    { <br>
+                    &emsp;"title": "new title of your todo", <br>
+                    &emsp;"description": "new description for the todo"<br>
+                    &emsp;"todoId": "id of the todo"<br>
+                    &emsp;"completed": true/false &emsp;&emsp;&emsp;<span>//optional</span> <br>
+                    }
+                </p>
+            </div>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>PATCH</span>&emsp;https://devang-todo-api.up.railway.app/user</h3>
+                <h4>**Bearer Token Required</h4>
+                <p>
+                    {<br>
+                    &emsp;"completed": true,<br>
+                    }
+                </p>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"todo": "UPDATED_DETAILS_OF_TODO"<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>DELETE /todo</h2>
+            <p>Removes an existing todo</p>
+            <p>Used for deleting todo</p>
+            <h3>Request Body:</h3>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>DELETE</span>&emsp;https://devang-todo-api.up.railway.app/todo</h3>
+                <h4>**Bearer Token Required</h4>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"status": "success",<br>
+                    &emsp;"msg": "todo deleted"<br>
+                    }
+                </p>
+            </div>
+        </div>
+        <div class="box">
+            <h2>GET /todo/:id</h2>
+            <p>Returns TODO by the user logged in with id</p>
+            <p>Used to retrieve todo</p>
+            <h3>Example Request:</h3>
+            <div class="codebox">
+                <h3><span>GET</span>&emsp;https://devang-todo-api.up.railway.app/todo</h3>
+                <h4>**Bearer Token Required</h4>
+            </div>
+            <h3>Example Response:</h3>
+            <div class="codebox">
+                <p>
+                    {<br>
+                    &emsp;"TODO": "YOUR_TODO ",<br>
+                    }
+                </p>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

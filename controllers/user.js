@@ -1,6 +1,6 @@
 import { User } from "../models/user.js";
 import { setToken } from "../services/token.js";
-
+import { addBlackListToken } from "../services/token.js";
 export function creteNewUser(req, res) {
     try {
         User.create({
@@ -40,6 +40,7 @@ export async function deleteUser(req, res) {
         let user = await User.findOne({ email: req.body.email, password: req.body.password });
         if (user) {
             let deletedUser = await User.findByIdAndDelete(user._id);
+            addBlackListToken(req.token)
             res.send({ status: "user deleted" });
         } else {
             res.send({ status: false, msg: 'no user found' })
@@ -53,8 +54,13 @@ export async function deleteUser(req, res) {
 export async function updateUser(req, res) {
     try {
         if(req.user.isLoggedIn){
-                let newUser = await User.findByIdAndUpdate(req.user.user._id, { email: req.body.email, password: req.body.password }, {new: true});
-                res.send({status: true, newUser: newUser});
+                let newUser = await User.findByIdAndUpdate(req.user.user._id, req.body, {new: true});
+                let token = setToken(newUser.toObject());
+                if(newUser){
+                    res.send({status: true, newUser: newUser, newToken: token});
+                }else{
+                    res.send({status: false, msg: 'no user found, use right token'})
+                }
         }
     } catch (error) {
         res.status(501).send({ msg: 'internal server error' });

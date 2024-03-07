@@ -6,5 +6,5 @@ export const userRouter = express.Router();
 userRouter.route('/')
     .get(getUser)
     .post(creteNewUser)
-    .delete(deleteUser)
+    .delete(isLoggedIn, deleteUser)
     .patch(isLoggedIn, updateUser)
