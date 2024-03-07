@@ -9,7 +9,7 @@ export function creteNewUser(req, res) {
             password: req.body.password
         })
             .then((createdUser) => {
-                let token = setToken(createdUser.toObject());
+                let token = setToken(createdUser?.toObject());
                 res.status(201).send({ status: "success", id: token })
             })
             .catch(() => {
@@ -55,8 +55,8 @@ export async function updateUser(req, res) {
     try {
         if(req.user.isLoggedIn){
                 let newUser = await User.findByIdAndUpdate(req.user.user._id, req.body, {new: true});
-                let token = setToken(newUser.toObject());
                 if(newUser){
+                    let token = setToken(newUser.toObject());
                     res.send({status: true, newUser: newUser, newToken: token});
                 }else{
                     res.send({status: false, msg: 'no user found, use right token'})
